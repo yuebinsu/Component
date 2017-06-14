@@ -11,9 +11,9 @@ import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 
 import priv.syb.updated.DownloadResponseHandler;
-import priv.syb.updated.StorageUtils;
+import priv.syb.updated.util.StorageUtils;
 import priv.syb.updated.UpdateDownloadRequest;
-import priv.syb.updated.UpdatedDownloadListener;
+import priv.syb.updated.Inferface.UpdatedDownloadListener;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
