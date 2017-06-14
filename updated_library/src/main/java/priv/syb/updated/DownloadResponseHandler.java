@@ -16,6 +16,8 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.net.UnknownHostException;
 
+import priv.syb.updated.Inferface.UpdatedDownloadListener;
+
 /**
  * Created by：Administrator on 2017/6/12 10:03
  * 619389279@qq.com
@@ -92,7 +94,7 @@ public class DownloadResponseHandler {
         }
     }
 
-    private void sendonStartMessage() {
+    private void sendStartMessage() {
         sendMessage(obtainMessage(START_MESSAGE, null));
     }
 
@@ -133,13 +135,12 @@ public class DownloadResponseHandler {
         listener.onFailure(failureCode, e);
     }
 
-    void sendResponseMessage(String locadPath) {
+    void sendResponseMessage(String localPath) {
         completeSize = 0;
         FileOutputStream out = null;
         InputStream is=null;
-        sendonStartMessage();
+        sendStartMessage();
         try {
-            // long bytesum = 0;
             URL url = new URL(downloadUrl);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
@@ -155,17 +156,15 @@ public class DownloadResponseHandler {
             long currentLength = urlConnection.getContentLength();
             if (!Thread.currentThread().isInterrupted()) {
                 is=urlConnection.getInputStream();
-                int byteread = 0;
+                int byteRead;
                 String apkName = downloadUrl.substring(downloadUrl.lastIndexOf("/") + 1, downloadUrl.length());
-                File apkFile = new File(locadPath, apkName);
+                File apkFile = new File(localPath, apkName);
                 out = new FileOutputStream(apkFile);
                 byte[] buffer = new byte[BUFFER_SIZE];
-
                 int oldProgress = 0;
-
-                while ((byteread = is.read(buffer)) != -1) {
-                    completeSize += byteread;
-                    out.write(buffer, 0, byteread);
+                while ((byteRead = is.read(buffer)) != -1) {
+                    completeSize += byteRead;
+                    out.write(buffer, 0, byteRead);
 
                     int progress = (int) (completeSize * 100L / currentLength);
                     // 如果进度与之前进度相等，则不更新，如果更新太频繁，否则会造成界面卡顿

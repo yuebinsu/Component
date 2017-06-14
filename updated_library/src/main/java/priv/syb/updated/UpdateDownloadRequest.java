@@ -2,17 +2,14 @@ package priv.syb.updated;
 
 
 import java.io.IOException;
-import java.io.InterruptedIOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
+
+import priv.syb.updated.Inferface.UpdatedDownloadListener;
 
 /**
- * Created by：Administrator on 2017/6/12 10:00
+ * Created by：su on 2017/6/12 10:00
  * 619389279@qq.com
  */
 public class UpdateDownloadRequest implements Runnable {
-    private String downloadUrl;
-    private UpdatedDownloadListener listener;
     private String localPath;
     private boolean isDownloading = false;
 
@@ -20,13 +17,11 @@ public class UpdateDownloadRequest implements Runnable {
 
     public UpdateDownloadRequest(String downloadUrl, String localPath, UpdatedDownloadListener listener) {
         this.localPath = localPath;
-        this.downloadUrl = downloadUrl;
-        this.listener = listener;
         this.isDownloading = true;
         downloadResponseHandler = new DownloadResponseHandler(downloadUrl, listener);
     }
 
-    private void makeRequest() throws IOException, InterruptedIOException {
+    private void makeRequest() throws IOException {
 
         if (!Thread.currentThread().isInterrupted()) {
             downloadResponseHandler.sendResponseMessage(localPath);

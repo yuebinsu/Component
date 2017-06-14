@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package priv.syb.updated;
+package priv.syb.updated.util;
 
 import android.content.Context;
 import android.content.pm.PackageManager;

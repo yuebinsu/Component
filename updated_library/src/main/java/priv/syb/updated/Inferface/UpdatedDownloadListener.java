@@ -1,4 +1,6 @@
-package priv.syb.updated;
+package priv.syb.updated.Inferface;
+
+import priv.syb.updated.DownloadResponseHandler;
 
 /**
  * Created by：su on 2017/6/12 09:44
@@ -12,6 +14,6 @@ public interface UpdatedDownloadListener {
 
     void onFinished(float completeSize);
 
-    void onFailure( DownloadResponseHandler.FailureCode code,Exception e);
+    void onFailure(DownloadResponseHandler.FailureCode code, Exception e);
 
 }
