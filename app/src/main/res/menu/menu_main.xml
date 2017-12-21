@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/item_send_cmd" android:title="发送指令"
+        app:showAsAction="never"
+        />
+    <item android:id="@+id/item_read_card_info" android:title="获取卡信息"
+        app:showAsAction="never"
+        />
+    <item android:title="待定"
+        app:showAsAction="never"/>
+</menu>

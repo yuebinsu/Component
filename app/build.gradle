@@ -21,10 +21,13 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support.constraint:constraint-layout:1.0.0'
+    /* compile 'com.android.support.constraint:constraint-layout:${rootProject.ext.support}'*/
     testCompile 'junit:junit:4.12'
     compile project(':updated_library')
+    compile 'com.android.support:recyclerview-v7:25.4.0'
+    compile 'com.google.code.gson:gson:2.6.2'
 }
